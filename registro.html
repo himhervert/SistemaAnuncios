@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Área de Computación e Informática</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="css/bootstrap.css">         -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
+</head>
+
+<body>
+    <div id="main-container" class="container">
+        <!-- Encabezado -->
+        <div id="main-header" class="container-fluid">
+            <div class="header-body row">
+                <div class="uaslp logo col-lg-2 col-md-2 col-sm-6 col-xs-6">
+                    <a href="#"></a>
+                </div>
+                <div class="engine logo col-lg-2 col-md-2 col-sm-6 col-xs-6">
+                    <a href="#"></a>
+                </div>
+                <div class="info-comp col-lg-8 col-md-8">
+                    <div class="row">
+                        <div class="area-title col-lg-9 col-md-9"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navegador  -->
+        <nav id="main-navbar" class="navbar navbar-default">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a class="link-to" href="#">Inicio</a>
+                </li>
+                <li>
+                    <a class="link-to" href="#">Anuncios</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="link-to" href="login.html">Iniciar Sesión</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- Cuerpo del body-->
+        <div id="main-content" class="content container-fluid" style=" overflow: scroll;">
+            <div class="container">
+                <form class="form-horizontal" id="registro" action="registro.php" method="POST">
+                        <label for="username">Nombre de usuario</label> <div class="error" id="e1"></div>
+                        <input type="text" id="username" class="form-control" name="username" placeholder="Nombre Usuario" required autofocus />
+                        <label for="pwd">Password</label> <div class="error" id="e2"></div>
+                        <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Contraseña" required/>
+                        <label for="rpwd">Repetir password</label> <div class="error" id="e3"></div>
+                        <input type="password" class="form-control" id="rpwd" name="rpwd" placeholder="Contraseña" required/>
+                        <label for="name">Nombre</label> 
+                        <input type="text" class="form-control" name="name" placeholder="Nombre completo" required />
+                        <label for="apPaterno">Apellido Paterno</label> 
+                        <input type="text" class="form-control" name="apPaterno" placeholder="Apellido Paterno" required/>
+                        <label for="apMaterno">Apellido Materno</label>
+                        <input type="text" class="form-control" name="apMaterno" placeholder="Apellido Materno" required/>
+                        <label for="email">E-mail</label>
+                        <input type="text" class="form-control" name="email" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required/>
+                        
+                        <label for="telefono">Telefono</label>
+                        <input type="text" class="form-control" name="telefono" required/>
+                        <input type="submit" value="Registrar"> 
+                        <div id="mensaje"></div>
+                </form>
+            </div>
+        </div>
+        <!-- Píe de página -->
+        <nav id="main-footer" class="navbar navbar-default">
+            <div class="col-lg-12 col-md-12 col-sm-12"> Copyright © 2017 Universidad Autónoma de San Luis Potosí, </div>
+            <div class="col-lg-12 col-md-12 col-sm-12"> Facultad de Ingeniería, Área de Computación e Informática </div>
+        </nav>
+    </div>
+</body>
+<!--<script src="js/main.js"></script>-->
+<script src="js/validaciones.js"></script>
+
+</html>

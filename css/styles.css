@@ -1,0 +1,476 @@
+/* CSS Para HTML, Caracteristicas por Default */
+* { 
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0;
+}
+
+html,body {
+    height: 100%;
+    width: 100%;
+}
+body {
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.5rem;
+    font-size: 100%;
+    background-color: rgb(239, 239, 239);
+}
+html{
+    font-size: 16px;
+}
+/* CSS Contenedor principal de la pagina. */
+
+#main-container {
+    height: 100%;
+    width: 90%;
+    /* background-color: #2C3E50; */
+    background-color: #ffffff;
+    color: black;
+    padding-left: 0rem;
+    padding-right: 0rem;
+}
+
+
+#listE{
+    margin-left: 5rem;
+}
+
+/* CSS Para Modificar el HEADER de la pagina. */
+#main-header{
+    height: 6.25rem;
+}
+.header-body, .header-body div{
+    height: 100%;
+}
+.container-fluid {
+    margin-right: auto;
+    margin-left: auto;
+}
+/* CSS de Los logos de la Facultad de Ingeniería y UASLP. */
+.logo {
+    background-repeat: no-repeat;
+    background-size: 95%;
+    background-position: center;
+    background-color: #1a2d45;
+    border-right: 0.0625rem solid #fff;
+}
+.uaslp {
+    background-image: url(img/uaslp.png);    
+}
+.engine {
+    background-image: url(img/ing.png);
+}
+/* CSS del encabezado del área de computación e informática. */
+.info-comp {
+    background-image: url(img/fondo.png);
+    background-size: 48.25rem 6.25rem;
+    background-repeat: no-repeat;
+    background-color: #777776;
+}
+.area-title {
+    background-image: url(img/titulo_acei.png);
+    background-position-y: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+/*                                                                                */
+/* CSS Para El Menu (Navegador) donde se mostraran las opciones de la pagina web. */
+/*                                                                                */
+#main-navbar{
+    border-radius: 0rem;
+    height: 3rem;
+}
+#main-navbar ul, #main-navbar a{
+    height: 3rem;
+    color: #fff;
+}
+.navbar {
+    border: none;
+    min-height: initial;
+    margin-bottom: auto;
+}
+.link-to {
+    text-align: center;
+}
+.navbar-right{
+    margin-right: 0rem;
+}
+.navbar-default{
+    background-color: #2c3e50;
+}
+
+.error{
+    display: inline;
+}
+/* 
+@media (max-width:){
+
+} */
+/*                                                                            */
+/* CSS Para el manejo de los Estilos del contenido principal de los anuncios. */
+/*                                                                            */
+#main-content {
+    width: 100%;
+    height: 73%;
+    border-radius: 0rem;
+    padding-left: inherit;
+    padding-right:inherit;
+}
+#main-content .separator{
+    float: left;
+    height: 100%;
+}
+#main-content .row, .op_conf, .menu_conf{
+    height: 100%;
+}
+#main-content .navbar-side{
+    border-radius: 0rem;
+    height: 100%;
+}
+
+.separator {
+    height: inherit;
+    margin-left: 0rem;
+    margin-right: 0rem;
+}
+.left-panel{
+    width: 45%;
+}
+.right-panel{
+    width: 55%;
+}
+.view-panel{
+    display: inline-block;
+    width: 100%;
+    height:50%;
+    background-color: #ffffff;
+}
+/*                                           */
+/* CSS Para modificar el contenido del Reloj.*/
+/*                                           */
+#time-panel{
+    height: 30%;
+    width:100%;
+    text-align: center;
+}
+.date-time-content{
+    width: 100%;
+    height: 100%;
+    margin-left: 0rem;
+    margin-right: 0rem;
+}
+.date-time-content div{
+    height: 50%;
+    width: 100%;
+}
+#date{
+    height: 100%;
+    width: 100%;
+    margin-top: 0rem;
+    margin-bottom: 0rem;    
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+#timer{
+    height: 100%;
+    width: 100%;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+/*                                                       */
+/* CSS Para modificar el contenido del Anuncio de texto. */
+/*                                                       */
+#text-panel{
+    height: 70%;
+}
+#text-panel .view-panel{
+    padding-left: 0rem;
+    padding-right: 0rem;
+}
+.text-content,.text-content .row{
+    height: 100%;
+}
+.text-title{
+    text-align: center;
+    height: 25%;
+}
+#announcement-title{
+    height: 100%;
+    width: 100%;
+    margin-top: 0rem;
+    margin-bottom: 0rem;    
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.text-body{
+    text-align: justify;
+    height: 75%;
+    margin: 0rem;
+    font-size: 1.3rem;
+}
+#announcement-body{
+    height: 100%;
+    margin: 0rem;
+    padding: inherit;
+}
+
+/*                                                                               */
+/* CSS Para modificar los anuncios en formato de imagen del contenedor principal */
+/*                                                                               */
+
+.image {
+    
+    /*padding-left: 13.5rem;
+    padding-right: 13.5rem;   Relacion 1:1 */
+
+   /* padding-left: 11.5rem;
+    padding-right: 11.5rem; Relacion 4:3 */
+
+    padding-left: 10%;
+    padding-right: 10%;
+}
+#image-one {
+    /* background-image: url(img/semana_ing.jpg);
+    background-position-x: center;
+    background-size: 100%;
+    background-repeat: no-repeat; */
+    width: 100%;
+    height: 100%;
+}
+
+#image-two {
+    /* background-image: url(img/egresados.png);
+    background-position-x: center;
+    background-size: 100%;
+    background-repeat: no-repeat; */
+    width: 100%;
+    height: 100%;
+}
+
+.sliderItem11 {
+    width: 100%;
+    height: 100%;
+}
+
+.sliderItem2 {
+    display:none;
+    width: 100%;
+    height: 100%;
+}
+
+/*#timerFondo{
+    margin: auto;
+    width: 65%;
+    height: 100%;
+    background-color: #2c3e50;
+    border-radius: .8rem;
+}*/
+
+#timer{
+    color: black;
+}
+
+/*                                                               */
+/* CSS Para modificar el píe de página del contenedor principal. */
+/*                                                               */
+#main-footer{
+    clear:both;
+    text-align: center;
+    border-radius: 0rem;
+    color: #ffffff;
+}
+
+
+
+/*                                 */
+/* CSS MEDIA QUERY PARA ENCABEZADO */
+/*                                 */
+/* @media (min-width:75rem){
+    .info-comp{
+        display: block;
+    }
+} */
+
+
+@media (max-width:30rem){  /* 480px */
+    .logo{
+        background-size: 90%;
+    }
+    .info-comp{
+        display: none;
+    }
+
+    #time{
+        font-size: medium;
+    }
+
+    #date{
+        font-size: large;
+    }
+
+
+   .left-panel{
+    width: 100%;
+    display: block;
+    }
+    .right-panel{
+    width: 100%;
+    }
+    .date-time-content{
+        height: 50%;
+        
+    }
+    #time-panel{
+        height: 35%;
+    }
+
+    #text-panel{
+        height: 65%;
+    }
+
+    #announcement-body{
+        font-size: 1rem;
+    }
+    
+    #announcement-title{
+        font-size: x-large;
+    }
+    
+    .nav li{
+        padding:0;
+        margin:0;
+        width:5rem;
+        display:inline-block;
+    }
+}
+
+@media  (min-width: 30rem) /* 480px */ and (max-width:50rem) /* 768px */{ 
+    .logo{
+        background-size: 60%;
+    }
+    .info-comp{
+        display: none;
+    }
+}
+
+@media (min-width:50rem) and (max-width:62rem) /* 991px */{ 
+    .info-comp{
+        display: block;
+    }
+    .logo{
+        background-size: 95%;
+        border-left: 0.0625rem solid #fff;        
+    }
+}
+
+@media (min-width:61.9rem){
+    
+}
+@media tv and (min-width:60rem) {
+     #main-header{
+        display: none;
+        margin-left: 1rem;
+        margin-right: 1rem;
+     }
+    #main-navbar{
+        display: none;
+    }
+    #main-footer{
+        display: none;
+    }
+    #main-content{
+        width: 90%;
+        height: 100%;
+        background-color: #2c3e50;
+        margin-right: 0;
+    }
+    
+    #main-container{
+        background-color: #2c3e50;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+    
+    .image{
+        
+    }
+    .left-panel{
+        width: 30%;
+        
+    }
+    .right-panel{
+        width: 70%;
+        
+    }
+    
+    #time-panel{
+        background-color: #2c3e50;
+    }
+    
+    #text-panel{
+        background-color: #2c3e50;
+    }
+    
+    #images-div{
+        background-color: #2c3e50;
+    }
+    #images2-div{
+        background-color: #2c3e50;
+    }
+    *{
+        color: white;
+    }
+
+    #timer{
+        font-size: 2rem;
+        color: white;
+    }
+
+    #date{
+        font-size: xx-large;
+    }
+
+ 
+    .date-time-content{
+        height: 50%;
+        
+    }
+    #time-panel{
+        height: 30%;
+    }
+
+    #text-panel{
+        height: 70%;
+    }
+
+    #announcement-body{
+        font-size: 1rem;
+        padding: 0;
+    }
+    
+    #announcement-title{
+        font-size: 1.5rem;
+    }
+
+    html{
+        font-size:35px;
+    }
+
+    .left-panel
+    {
+        padding: 0;
+    }
+
+    #text-panel
+    {
+        padding: 0;
+    }
+
+    .text-title{
+        height: 25%;
+    }
+}
+
