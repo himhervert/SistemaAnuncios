@@ -18,18 +18,18 @@ class Anuncio
         }
     }
 
-    public function agregarAnuncio($titulo, $descripcion, $iduser)
+    public function agregarAnuncio($titulo, $descripcion,$fechainicio, $fechafin, $nombreuser)
     {
         try
         {
             $titulo_anuncio = $titulo;
             $descripcion_anuncio=$descripcion;
             $sql = "INSERT INTO anuncio 
-            (`titulo`,`descripcion`,`id_usuario`)
-            VALUES (?, ?, ?)";
+            (`titulo`,`descripcion`,`fechainicio`,`fechafin`, `usuario`)
+            VALUES (?, ?, ?, ?, ?)";
             $consulta = $this->_db->prepare($sql);
             $consulta->execute(
-                array($titulo, $descripcion, $iduser)
+                array($titulo, $descripcion,$fechainicio,$fechafin, $nombreuser)
             );
             return true;
         } catch(PDOexception $ex) {
@@ -65,9 +65,11 @@ class Anuncio
         echo '<div class = "row">';
         foreach ($instruccion->fetchAll(PDO::FETCH_ASSOC) as $row) {
             echo "<tr>" 
-            ."<td>".$row["titulo"]."</td>" 
-            ."<td>".$row["descripcion"]."</td>" 
-            ."<td>".$row["id_usuario"]."</td>" 
+            ."<td>".$row["Titulo"]."</td>" 
+            ."<td>".$row["Descripcion"]."</td>" 
+            ."<td>".$row["FechaInicio"]."</td>" 
+            ."<td>".$row["FechaFin"]."</td>" 
+            ."<td>".$row["Usuario"]."</td>" 
             ."</tr>"; 
         }
     }
@@ -75,9 +77,9 @@ class Anuncio
     public function divAnuncios($instruccion, $opt)
     {
         foreach ($instruccion->fetchAll(PDO::FETCH_ASSOC) as $row) {
-            $titulo = $row["titulo"];
-            $descripcion = $row["descripcion"];
-            echo '<div class="anuncio-item text-content row" id="anuncios-div">';            
+            $titulo = $row["Titulo"];
+            $descripcion = $row["Descripcion"];
+            echo '<div class="anuncio-item text-content row" id="anuncios-div">';
             echo '<div class="text-title col-md-12 col-lg-12">
             <h1 id="announcement-title">'.$titulo.'</h1></div>
             <div class="text-body col-md-12 col-lg-12">

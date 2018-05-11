@@ -13,5 +13,5 @@
  */
 session_start(); // Se inicializa el arreglo de $_SESSION
 session_destroy(); // Se destruye el arreglo de $_SESSION
-header('Location:index.php'); // Te redirecciona al index.
+header('Location: ../index.php'); // Te redirecciona al index.
 ?>

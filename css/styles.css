@@ -52,7 +52,8 @@ html{
     background-size: 95%;
     background-position: center;
     background-color: #1a2d45;
-    border-right: 0.0625rem solid #fff;
+    border-left: 0.0625rem solid #ffff;
+    border-right: 0.0625rem solid #ffff;
 }
 .uaslp {
     background-image: url(img/uaslp.png);    
@@ -111,7 +112,7 @@ html{
 /*                                                                            */
 #main-content {
     width: 100%;
-    height: 73%;
+    height: 70%;
     border-radius: 0rem;
     padding-left: inherit;
     padding-right:inherit;
@@ -368,6 +369,7 @@ html{
 @media (min-width:61.9rem){
     
 }
+
 @media tv and (min-width:60rem) {
      #main-header{
         display: none;
@@ -472,5 +474,15 @@ html{
     .text-title{
         height: 25%;
     }
+
+    
+}
+@media (min-width: 768px){
+        .container {
+            width: 500px;
+        }
+        #form-config {
+            width: 300px;
+        }
 }
 

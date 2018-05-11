@@ -15,7 +15,7 @@
  */
 session_start();
 if (!isset($_SESSION['usuario'])) {
-    header('Location: login.php');
+    header('Location: php/login.php');
 }
 ?>
 <head>
@@ -63,14 +63,9 @@ if (!isset($_SESSION['usuario'])) {
                 <?php endif; ?>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-            <?php if (!isset($_SESSION['usuario'])) : ?>
-                <li>
-                    <a class="link-to" href="login.html">Iniciar Sesión</a>
-                </li>
-            <?php endif; ?>
             <?php if (isset($_SESSION['usuario'])) : ?>
                 <li>
-                    <a class="link-to" href="logout.php">Cerrar Sesión</a>
+                    <a class="link-to" href="php/botlogout.php">Cerrar Sesión</a>
                 </li>
             <?php endif; ?>
             </ul>
@@ -82,12 +77,11 @@ if (!isset($_SESSION['usuario'])) {
                         <nav class="navbar navbar-default navbar-side">
                             <!-- normal collapsible navbar markup -->
                             <ul class="nav nav-pills nav-stacked">
-                                <?php if ($_SESSION['permiso'] == 0) : ?>
+                                <?php if ($_SESSION['tipo'] == 'Administrador') : ?>
                                     <li><a class="active" data-toggle="pill" href="#usuarios">Usuarios</a></li>
                                 <?php endif; ?>
                                 <li><a data-toggle="pill" href="#imagenes">Imagenes</a></li>
                                 <li><a data-toggle="pill" href="#anuncios">Anuncios</a></li>
-
                             </ul>
                         </nav>
                     </div>
@@ -98,8 +92,12 @@ if (!isset($_SESSION['usuario'])) {
                             <div id="usuarios" class="tab-pane fade table-responsive">
                                 <h3>Usuarios</h3>
                                 <form class="form form-responsive" action="registro.html">
-                                <label class="" for="nuevousuario">Seleccione su imagen:</label>
+                                <label class="" for="nuevousuario">Agregar usuario:</label>
                                 <input type="submit" class="btn btn-default"value="Nuevo usuario"/>
+                                </form>
+                                <form class="form form-responsive" action="registro.html">
+                                <label class="" for="editarusuario">Editar usuario:</label>
+                                <input type="submit" class="btn btn-default"value="Editar usuario"/>
                                 </form>
                                 <table class="table table-hover">
                                 <thead>
@@ -107,36 +105,45 @@ if (!isset($_SESSION['usuario'])) {
                                         <th>Nombre</th>
                                         <th>Email</th>
                                         <th>Tipo Usuario</th>
+                                        <th>Telefono</th>
                                     </tr>
                                 </thead>
                                 <?php
-                                    require "tableusers.php";
+                                    require "php/tableusers.php";
                                 ?>
                                 </table>
                             </div>
                             <div id="imagenes" class="tab-pane fade">
-                            <form class="form form-responsive" enctype="multipart/form-data" action="uploadimg.php" method="POST">
+                            <form class="form-config form form-responsive" enctype="multipart/form-data" action="php/uploadimg.php" method="POST">
                                 <input type="hidden" name="MAX_FILE_SIZE" value="5242880" />
                                 <label class="" for="imagen_anuncio">Seleccione su imagen:</label>
                                 <input name="imagen_anuncio" accept="image/*" type="file" class="form-control">
                                 <label class="" for="tempoimg">Tiempo de muestra:</label>
                                 <input name="tempoimg" type="number" height="2"
                                 class="form-control" id="tempoimg" min="1" max="60" value="10">
+                                <label class="" for="tempoimg">Fecha Inicio:</label>
+                                <input name="fechaini" type="date" value="<?php echo date("Y-m-d");?>">
+                                <label class="" for="tempoimg">Fecha Fin:</label>
+                                <input name="fechafin" type="date" value="<?php echo date("Y-m-d");?>">
                                 <input type="submit" class="btn btn-default"value="Subir Archivo"/>
                             </form>
                             <br>
                         
                             <?php
-                                    require "tableimgs.php";
+                                    require "php/tableimgs.php";
                                 ?>
                             </div>
                             <div id="anuncios" class="tab-pane fade table-responsive">
                                 <h3>Anuncios de Texto</h3>
-                                <form class="form form-responsive" action="uploadAnun.php" method="POST">
+                                <form class="form form-responsive" action="php/uploadAnun.php" method="POST">
                                     <label class="" for="titulo">Inserte un titulo al anuncio:</label>
                                     <input name="titulo" type="text" class="form-control">
                                     <label class="" for="descripcion">Descripción del anuncio:</label>
                                     <input name="descripcion" type="text" class="form-control">
+                                    <label class="" for="tempoimg">Fecha Inicio:</label>
+                                    <input name="fechaini2" type="date" value="<?php echo date("Y-m-d");?>">
+                                    <label class="" for="tempoimg">Fecha Fin:</label>
+                                    <input name="fechafin2" type="date" value="<?php echo date("Y-m-d");?>">
                                     <input type="submit" class="btn btn-default" value="Subir Anuncio"/>
                                 </form>
                                 <table class="table table-hover">
@@ -144,11 +151,13 @@ if (!isset($_SESSION['usuario'])) {
                                     <tr>
                                         <th>Titulo</th>
                                         <th>Descripcion</th>
+                                        <th>Fecha Inicio</th>
+                                        <th>Fecha Fin</th>
                                         <th>Usuario</th>
                                     </tr>
                                 </thead>
                                 <?php
-                                    require "tableanuns.php";
+                                    require "php/tableanuns.php";
                                 ?>
                                 </table>
                             </div>
@@ -162,7 +171,7 @@ if (!isset($_SESSION['usuario'])) {
                 Copyright © 2017 Universidad Autónoma de San Luis Potosí,
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12"> 
-                Facultad de Ingeniería, Área de Computación e Informática
+                Facultad de Ingeniería, Área de Ciencias de la Computación.
             </div>
         </nav>
     </div>

@@ -77,14 +77,15 @@ class Usuario
     {
         try
         {
-            $sql = "SELECT `Nombre`, `Apellido`, `TipoUsuario`, `Email` FROM `Usuario`";
+            $sql = "SELECT `Nombre`, `ApellidoPaterno`, `ApellidoMaterno`, `TipoUsuario`, `Email`, `Telefono` FROM `Usuario`";
             $instruccion = $this->_db->prepare($sql);
             $instruccion->execute();
             foreach ($instruccion->fetchAll(PDO::FETCH_ASSOC) as $row) {
                 echo "<tr>" 
-                ."<td>".$row["Nombre"]." " .$row["Apellido"]."</td>" 
-                ."<td>".$row["Email"]."</td>" 
+                ."<td>".$row["Nombre"]." " .$row["ApellidoPaterno"]." ".$row["ApellidoMaterno"]."</td>" 
                 ."<td>".$row["TipoUsuario"]."</td>" 
+                ."<td>".$row["Email"]."</td>" 
+                ."<td>".$row["Telefono"]."</td>" 
                 ."</tr>"; 
             }
 
@@ -144,6 +145,46 @@ class Usuario
             $instruccion->execute( 
                 array($nombre_usuario,$password,$nombre,
                  $apellido, $tipo, $email, $telefono)
+            );
+            return true;
+        } catch(PDOException $ex) {
+            echo "Error en la inserción ".$ex->getMessage();
+            return false;
+        }
+    }
+
+    public function modificar($password, $nombre, $apellido, 
+        $tipo, $email, $telefono, $nombre_usuario
+    ) {
+        try
+        {
+            $sql = "UPDATE `usuario` 
+            SET  `Passwd` = ?, `TipoUsuario` = ?,`Nombre` = ?,
+             `Apellido` = ?,`Email` = ?, `Telefono` = ? 
+            WHERE `NombreUsuario` = ?";
+            
+            $instruccion = $this->_db->prepare($sql);
+            $instruccion->execute( 
+                array($password, $nombre, $apellido,
+                 $tipo, $email, $telefono, $nombre_usuario)
+            );
+            return true;
+        } catch(PDOException $ex) {
+            echo "Error en la inserción ".$ex->getMessage();
+            return false;
+        }
+    }
+
+    public function eliminar($nombre_usuario, $password
+    ) {
+        try
+        {
+            $sql = "DELETE FROM `usuario` 
+            WHERE `NombreUsuario` = ?, `Passwd` = ?";
+            
+            $instruccion = $this->_db->prepare($sql);
+            $instruccion->execute( 
+                array($nombre_usuario, $password)
             );
             return true;
         } catch(PDOException $ex) {

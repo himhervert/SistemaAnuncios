@@ -17,7 +17,7 @@ session_start();
 ?>
 <head>
     <meta charset="UTF-8">
-    <title>Área de Computación e Informática</title>
+    <title>Área de Ciencias de la Computación</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -99,13 +99,13 @@ session_start();
             <ul class="nav navbar-nav navbar-right">
             <?php if (!isset($_SESSION['usuario'])) : ?>
                 <li>
-                    <a class="link-to" href="login.html">Iniciar Sesión</a>
+                    <a class="link-to" href="login.php">Iniciar Sesión</a>
                 </li>
             <?php endif; ?>
             
             <?php if (isset($_SESSION['usuario'])) : ?>
                 <li>
-                    <a class="link-to" href="logout.php">Cerrar Sesión</a>
+                    <a class="link-to" href="php/botlogout.php">Cerrar Sesión</a>
                 </li>
             <?php endif; ?>
             </ul>
@@ -125,7 +125,7 @@ session_start();
                     </div>
                 <div id="text-panel" class="view-panel container-fluid">
                         <?php
-                        require 'slideranuns.php';
+                        require 'php/slideranuns.php';
                         ?>
                 </div>
             </div>
@@ -134,7 +134,7 @@ session_start();
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
                         <?php
-                            require 'slider2.php';
+                            require 'php/slider2.php';
                         ?>
                         </div>
                         <!-- Add Pagination -->
@@ -144,7 +144,7 @@ session_start();
                 </div>
                 <div  class="image view-panel col-lg-12 col-sm-12" id="images2-div">                    
                     <?php
-                        require 'slider1.php';
+                        require 'php/slider1.php';
                     ?>
                 </div>
             </div>
@@ -152,7 +152,7 @@ session_start();
         <!-- Píe de página -->
         <nav id="main-footer" class="navbar navbar-default">
             <div class="col-lg-12 col-md-12 col-sm-12"> Copyright © 2017 Universidad Autónoma de San Luis Potosí, </div>
-            <div class="col-lg-12 col-md-12 col-sm-12"> Facultad de Ingeniería, Área de Computación e Informática </div>
+            <div class="col-lg-12 col-md-12 col-sm-12"> Facultad de Ingeniería, Área de Ciencias de la Computación </div>
         </nav>
     </div>
 </body>

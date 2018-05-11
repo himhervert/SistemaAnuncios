@@ -63,14 +63,14 @@ class Imagen
      * 
      * @return true||false
      */
-    public function agregarImagen($files, $usuario, $tiempo)
+    public function agregarImagen($files, $usuario, $tiempo, $fechaini, $fechafin)
     {
         try
         {
             $nombre_Imagen = $files['imagen_anuncio']['name'];
             $tipoImagen=$files['imagen_anuncio']['type'];
             $tamanoImagen=$files['imagen_anuncio']['size'];
-            $carpeta_destino=$_SERVER['DOCUMENT_ROOT'].'/Sistema/upload/';
+            $carpeta_destino=$_SERVER['DOCUMENT_ROOT'].'/sistemaanuncios/upload/';
 
             echo $nombre_Imagen;
             echo "<br>";
@@ -86,11 +86,49 @@ class Imagen
             // VALUES ($usuario,'$nombre_Imagen','$tipoImagen',$tamanoImagen)"
             // );
             $sql = "INSERT INTO imagen 
-            (`id_usuario`,`nombre`,`tipo`,`size`, `tempo`)
-            VALUES (?, ?, ?, ?, ?)";
+            (`nombre`,`tipo`,`tamimagen`, `tempo`,`FechaInicio`,`FechaFinal`,`Usuario`)
+            VALUES (?, ?, ?, ?, ?, ?, ?)";
             $consulta = $this->_db->prepare($sql);
             $consulta->execute(
-                array($usuario, $nombre_Imagen, $tipoImagen, $tamanoImagen, $tiempo)
+                array( $nombre_Imagen, $tipoImagen, $tamanoImagen, $tiempo, $fechaini, $fechafin, $usuario)
+            );
+            move_uploaded_file(
+                $files['imagen_anuncio']['tmp_name'], $carpeta_destino.$nombre_Imagen
+            );
+            return true;
+        } catch(PDOexception $ex) {
+            echo "Error en la inserción de la imagen: ". $ex->getMessage();
+            return false;
+        }
+    }
+    public function eliminarImagen($files, $usuario, $tiempo, $fechaini, $fechafin)
+    {
+        try
+        {
+            $nombre_Imagen = $files['imagen_anuncio']['name'];
+            $tipoImagen=$files['imagen_anuncio']['type'];
+            $tamanoImagen=$files['imagen_anuncio']['size'];
+            $carpeta_destino=$_SERVER['DOCUMENT_ROOT'].'/sistemaanuncios/upload/';
+
+            echo $nombre_Imagen;
+            echo "<br>";
+            echo $tipoImagen;
+            echo "<br>";
+            echo $tamanoImagen;
+            echo "<br>";
+            echo $carpeta_destino;
+            //$this->_db->real_escape_string($nombre_Imagen);
+            //$this->_db->real_escape_string($tipoImagen);
+            // $res=$this->_db->query(
+            //     "INSERT INTO imagen (id_usuario,nombre,tipo,size)
+            // VALUES ($usuario,'$nombre_Imagen','$tipoImagen',$tamanoImagen)"
+            // );
+            $sql = "INSERT INTO imagen 
+            (`nombre`,`tipo`,`tamimagen`, `tempo`,`FechaInicio`,`FechaFinal`,`Usuario`)
+            VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $consulta = $this->_db->prepare($sql);
+            $consulta->execute(
+                array( $nombre_Imagen, $tipoImagen, $tamanoImagen, $tiempo, $fechaini, $fechafin, $usuario)
             );
             move_uploaded_file(
                 $files['imagen_anuncio']['tmp_name'], $carpeta_destino.$nombre_Imagen
@@ -102,13 +140,12 @@ class Imagen
         }
     }
 
-
     public function fetch($opt)
     {
         try
         {
             $sql = "SELECT 
-                `nombre`, `tipo`, `size`, `tempo`, `id_imagen`, `id_usuario` 
+                `idimagen`, `nombre`, `tipo`, `tamimagen`, `tempo`, `fechainicio`, `fechafinal`, `usuario` 
                 FROM `imagen`";
             $instruccion = $this->_db->prepare($sql);
             $instruccion->execute();
@@ -135,7 +172,7 @@ class Imagen
         echo '<div class = "row">';
         foreach ($instruccion->fetchAll(PDO::FETCH_ASSOC) as $row) {
             $dir = 'upload/'.$row["nombre"];
-            $id = 'img'.$row["id_imagen"];
+            $id = 'img'.$row["idimagen"];
             $tiempo = $row["tempo"];
             echo '<div class="col-md-3" id="'."$id ".'">';
             echo '<img src="'."$dir".'" 
@@ -151,9 +188,9 @@ class Imagen
     {
         foreach ($instruccion->fetchAll(PDO::FETCH_ASSOC) as $row) {
             $dir = 'upload/'.$row["nombre"];
-            $id = 'img'.$row["id_imagen"];
+            $id = 'img'.$row["idimagen"];
             $id = intval($id);
-            $valor = $row["id_imagen"];
+            $valor = $row["idimagen"];
             if ($valor%2 == 0) {
                 $tiempo = $row["tempo"];
                 echo '<img src="'."$dir".'" id="image-two1" class="sliderItem2"
@@ -165,8 +202,8 @@ class Imagen
     {
         foreach ($instruccion->fetchAll(PDO::FETCH_ASSOC) as $row) {
             $dir = 'upload/'.$row["nombre"];
-            $id = 'img'.$row["id_imagen"];
-            $valor = $row["id_imagen"];
+            $id = 'img'.$row["idimagen"];
+            $valor = $row["idimagen"];
             if ($valor%2 == 1) {
                 $tiempo = $row["tempo"];
                 echo '<div class="swiper-slide"><img src="'."$dir".'
